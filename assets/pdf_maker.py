@@ -1,8 +1,9 @@
 import re
+from typing import Union
 from fpdf import FPDF
 
 
-def make_pdf(article_title: str, article_text: str, article_image: str | None) -> str:
+def make_pdf(article_title: str, article_text: str, article_image: Union[str, None]) -> str:
     """
     Creates a pdf file containing the chosen article.
 
@@ -10,8 +11,10 @@ def make_pdf(article_title: str, article_text: str, article_image: str | None) -
     """
 
     pdf = FPDF()
-    pdf.add_font("TNR", "", r"assets/fonts/times new roman.ttf")
-    pdf.add_font("TNRB", "", f"assets/fonts/times new roman bold.ttf")
+    file_name = "./assets/fonts/07558_CenturyGothic.ttf"
+
+    pdf.add_font("TNR", "", file_name, uni=True)
+    pdf.add_font("TNRB", "", file_name, uni=True)
     pdf.set_margins(30, 23, 30)
     pdf.add_page()
 
@@ -39,7 +42,9 @@ def make_pdf(article_title: str, article_text: str, article_image: str | None) -
     article_title = article_title.replace(" ", "")
 
     # save the pdf as article_title.pdf
-    file = f"/Users/riobeggs/Documents/code/nzherald_webscraper/assets/articles/{article_title}.pdf"
+    import os
+    os.mkdir("./assets/articles/")
+    file = f"./assets/articles/{article_title}.pdf"
     pdf.output(file)
 
     # returns the file name as a string

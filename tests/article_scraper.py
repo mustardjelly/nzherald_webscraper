@@ -114,3 +114,7 @@ class ArticleScaper(unittest.TestCase):
             self.assertEqual(actual_error, expected_error)
             self.assertIsNone(self.scraper._article_title)
 
+    # Test Driven Development (TDD)
+    # Write the tests before you write the code
+    # Run tests are you write code until the test passes.
+    

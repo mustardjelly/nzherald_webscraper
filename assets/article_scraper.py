@@ -1,22 +1,15 @@
 from typing import Union
 from assets.image_downloader import download_image
-# import assets.webdriver as Driver
 from bs4 import BeautifulSoup
 import re
 
 
 class Article:
     _driver = None
-    _html = None
-    _article_text = None
-    _article_title = None
-    _text_list = None
-    _article_image = None
 
     def __init__(self):
-        # self._driver = Driver.run_web_driver()
-        file = open("/tmp/index.html")
-        self._html = BeautifulSoup(file, "lxml")
+        with open("/tmp/index.html") as file:
+            self._html = BeautifulSoup(file, "lxml")
         self._article_text = None
         self._article_title = None
         self._text_list = []

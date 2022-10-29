@@ -15,14 +15,14 @@ logging.basicConfig(level=logging.DEBUG)
 class ArticleScaper(unittest.TestCase):
 
     def setUp(self) -> None:
-        logging.info(f"Setting Up - {self._testMethodName}")
+        logging.debug(f"Setting Up - {self._testMethodName}")
         self._root = os.path.dirname(__file__)
         self._example_path = os.path.join(self._root, "assets", "example.html")
         self.scraper = Article(self._example_path)
         return super().setUp()
 
     def tearDown(self) -> None:
-        logging.info("Tearing Down")
+        logging.debug("Tearing Down")
         return super().tearDown()
 
     def test_init_loads_files(self):

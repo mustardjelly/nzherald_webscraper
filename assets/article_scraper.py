@@ -7,8 +7,8 @@ import re
 class Article:
     _driver = None
 
-    def __init__(self):
-        with open("/tmp/index.html") as file:
+    def __init__(self, file_path="/tmp/index.html"):
+        with open(file_path) as file:
             self._html = BeautifulSoup(file, "lxml")
         self._article_text = None
         self._article_title = None
